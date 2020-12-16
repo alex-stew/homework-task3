@@ -13,7 +13,7 @@ function writePassword(){
 function generatePassword(){
   var length = prompt("How long would you like your new password to be? ");
   if (length < 8 || length >128){
-    alert("You have choosen an invalid length for your new password, please input a number between 8 and 128.");
+    alert("You have choosen an invalid length for your new password, please input a number between 8 and 128. ");
     return (" ");
   }
   var lowerCase = confirm("Include lower-case letters? ");
@@ -22,29 +22,31 @@ function generatePassword(){
   var numeric = confirm("include numerical characters? ");
   
   if(!upperCase && !lowerCase && !special && !numeric){
-    alert("Ensure to select SOME character sets for me to work with...what do you want a password made of air? ");
+    alert("Ensure to select SOME character sets for me to work with...what do you want, a password made of air? ");
   }
 
-// adding the selected user inputs to a string variable based on confirm//
+  // adding the selected user inputs to a string variable based on confirm//
   var charSelect = (" ");
-    if (upperCase){
-      charSelect += ("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+    if (lowerCase){
+      charSelect+=("abcdefghijklmnopqrxtuvyxyz");
     }
-    else if (lowerCase){
-      charSelect += ("abcdefghijklmnopqrxtuvyxyz");
+    else if (upperCase){
+      charSelect+=("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
     }
     else if (special){
-      charselect += ("#$%&'()*+,-./:;<=>?@[\]^_`{|}~")
+      charSelect+=("#$%&'()*+,-./:;<=>?@[\]^_`{|}~")
     }
     else if (numeric){
-      charSelect += ("0123456789")
+      charSelect+=("0123456789")
     }
-// adding a loop to use the charSelect variable to randomly select for its avaliable list of characters and add them until they reach the determined password length//
+  // adding a loop to use the charSelect variable to randomly select for its avaliable list of characters and add them until they reach the determined password length//
   for (var i=0; i<length; i++){
-    var randomNum = Math.floor(Math.random() * charSelect.length+1)
+    var randomNum = Math.floor(Math.random() * (charSelect.length+1))
+    console.log(randomNum)
   }
-password += charSelect[randomNum]; return password
-  }
+
+
+}
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", generatePassword);
