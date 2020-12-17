@@ -28,25 +28,27 @@ function generatePassword(){
   // adding the selected user inputs to a string variable based on confirm//
   var charSelect = (" ");
     if (lowerCase){
-      charSelect+=("abcdefghijklmnopqrxtuvyxyz");
+      charSelect+="abcdefghijklmnopqrxtuvyxyz";
     }
-    else if (upperCase){
-      charSelect+=("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+    if (upperCase){
+      charSelect+="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     }
-    else if (special){
-      charSelect+=("#$%&'()*+,-./:;<=>?@[\]^_`{|}~")
+    if (special){
+      charSelect+="#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
     }
-    else if (numeric){
-      charSelect+=("0123456789")
+    if (numeric){
+      charSelect+="0123456789";
     }
   // adding a loop to use the charSelect variable to randomly select for its avaliable list of characters and add them until they reach the determined password length//
+  var password = (" ");
+  
   for (var i=0; i<length; i++){
-    var randomNum = Math.floor(Math.random() * (charSelect.length+1))
-    console.log(randomNum)
+    var randomNum = Math.floor(Math.random() * (charSelect.length+1));
+    password += charSelect[randomNum];
+    console.log(password);
   }
-
-
+  return password
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", generatePassword);
+generateBtn.addEventListener("click", writePassword);
