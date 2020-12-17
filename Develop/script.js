@@ -1,7 +1,7 @@
-// Assignment Code
+// Assignment Code //
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
+// Write password to the #password input //
 function writePassword(){
   var password = generatePassword()
   var passwordText = document.querySelector("#password");
@@ -9,7 +9,7 @@ function writePassword(){
   passwordText.value = password;
 }
 
-//user selected criteria and error messaging for incorrect inputs//
+//user selected criteria and error messaging for incorrect inputs //
 function generatePassword(){
   var length = prompt("How long would you like your new password to be? ");
   if (length < 8 || length >128){
@@ -25,7 +25,7 @@ function generatePassword(){
     alert("Ensure to select SOME character sets for me to work with...what do you want, a password made of air? ");
   }
 
-  // adding the selected user inputs to a string variable based on confirm//
+  // adding the selected user inputs to a string variable based on confirm //
   var charSelect = (" ");
     if (lowerCase){
       charSelect+="abcdefghijklmnopqrxtuvyxyz";
@@ -39,7 +39,8 @@ function generatePassword(){
     if (numeric){
       charSelect+="0123456789";
     }
-  // adding a loop to use the charSelect variable to randomly select for its avaliable list of characters and add them until they reach the determined password length//
+
+  // adding a for loop to use the charSelect variable to randomly select for its avaliable list of characters and add them until they reach the determined password length //
   var password = (" ");
   
   for (var i=0; i<length; i++){
@@ -50,5 +51,5 @@ function generatePassword(){
   return password
 }
 
-// Add event listener to generate button
+// Add event listener to the generate button which calls the function, initiating the application //
 generateBtn.addEventListener("click", writePassword);
